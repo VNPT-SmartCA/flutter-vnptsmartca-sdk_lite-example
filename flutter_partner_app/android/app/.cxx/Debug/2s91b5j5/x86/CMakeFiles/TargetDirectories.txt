@@ -1,0 +1,2 @@
+/Users/apple/Documents/SmartCA_Mobile_V2/egov.ptpm.smartca_mobile/sdk_v2_lite/flutter_partner_app/android/app/.cxx/Debug/2s91b5j5/x86/CMakeFiles/edit_cache.dir
+/Users/apple/Documents/SmartCA_Mobile_V2/egov.ptpm.smartca_mobile/sdk_v2_lite/flutter_partner_app/android/app/.cxx/Debug/2s91b5j5/x86/CMakeFiles/rebuild_cache.dir
