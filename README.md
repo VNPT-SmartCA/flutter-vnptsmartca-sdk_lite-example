@@ -1,4 +1,4 @@
-**Lưu ý trước khi chạy cập nhật đúng tham số clientId, clientSecret**
+Lưu ý trước khi chạy cập nhật ** đúng tham số clientId, clientSecret** đã được cấp qua email
 
 Xem hướng dẫn tại đây: 
 
