@@ -52,31 +52,11 @@ class MainActivity : FlutterFragmentActivity() {
         }
     }
 
-    // private fun createAccount() {
-    //     try {
-    //         VNPTSmartCA.createAccount { result ->
-    //             methodChannel.invokeMethod("createAccountResult", getMap(result))
-    //         }
-    //     } catch (ex: Exception) {
-    //         throw ex;
-    //     }
-    // }
-
     private fun getAuthentication(customerId: String) {
         try {
           
             VNPTSmartCA.getAuthentication(customerId) { result ->
                     methodChannel.invokeMethod("getAuthenticationResult", getMap(result))
-            }
-        } catch (ex: Exception) {
-            throw ex;
-        }
-    }
-
-    private fun getMainInfo() {
-        try {
-            VNPTSmartCA.getMainInfo { result ->
-                methodChannel.invokeMethod("getMainInfoResult", getMap(result))
             }
         } catch (ex: Exception) {
             throw ex;
