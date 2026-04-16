@@ -26,21 +26,12 @@ class MainActivity : FlutterFragmentActivity() {
 
                    var config = ConfigSDK(
                      env = SmartCAEnvironment.DEMO_ENV, // Môi trường kết nối DEMO/PROD
-                     clientId = "447a-639051886115104575.apps.smartcaapi.com", // clientId tương ứng với môi trường được cấp qua email
-                     clientSecret = "NWQzNDE3ZTc-YjI0OC00NDdh", // clientSecret tương ứng với môi trường được cấp qua email                    
+                     clientId = "", // clientId tương ứng với môi trường được cấp qua email
+                     clientSecret = "", // clientSecret tương ứng với môi trường được cấp qua email                    
                      lang = SmartCALanguage.VI,
                       isFlutter = true,
             	      customParams = customParams,
                  )
-
-                 // var config = ConfigSDK(
-                  //  env = SmartCAEnvironment.PROD_ENV, // Môi trường kết nối DEMO/PROD
-                   // clientId = "4c6a-637932338278807354.apps.smartcaapi.com", // clientId tương ứng với môi trường được cấp qua email
-                    //clientSecret = "OTk1NjZlYWY-ZWVhMC00YzZh", // clientSecret tương ứng với môi trường được cấp qua email                    
-                    //lang = SmartCALanguage.VI,
-                    //isFlutter = true,
-            	    //customParams = customParams,
-                //)
 
             VNPTSmartCA.initSDK(this, config)
 
