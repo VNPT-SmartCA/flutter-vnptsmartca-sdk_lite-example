@@ -26,8 +26,8 @@ import SmartCASDK
             )
         
             let config = SDKConfig(
-                clientId: "447a-639051886115104575.apps.smartcaapi.com",
-                clientSecret: "NWQzNDE3ZTc-YjI0OC00NDdh",
+                clientId: "",
+                clientSecret: "",
                 environment: ENVIRONMENT.DEMO, 
                 lang: LANG.VI,
                 isFlutterApp: true,
