@@ -206,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // SizedBox(height: 20),
             // ElevatedButton(onPressed: toMainPage, child: Text("getMainPage")),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: signOut, child: Text("sign Out")),
+            // ElevatedButton(onPressed: signOut, child: Text("sign Out")),
             // ElevatedButton(onPressed: createAccount, child: Text("Create Acc")),
           ],
         ),

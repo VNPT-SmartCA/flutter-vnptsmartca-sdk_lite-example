@@ -28,8 +28,8 @@ class MainActivity : FlutterFragmentActivity() {
           return if (isProd) {
             ConfigSDK(
               env = SmartCAEnvironment.PROD_ENV,
-              clientId = "4a84-639089078489881767.apps.smartcaapi.com",
-              clientSecret = "OWUyOWUzZjg-YjIwNy00YTg0",
+              clientId = "",
+              clientSecret = "",
               lang = SmartCALanguage.VI,
               isFlutter = true,
               customParams = customParams,
@@ -37,8 +37,8 @@ class MainActivity : FlutterFragmentActivity() {
           } else {
             ConfigSDK(
               env = SmartCAEnvironment.DEMO_ENV,
-              clientId = "447a-639051886115104575.apps.smartcaapi.com",
-              clientSecret = "NWQzNDE3ZTc-YjI0OC00NDdh",
+              clientId = "",
+              clientSecret = "",
               lang = SmartCALanguage.VI,
               isFlutter = true,
               customParams = customParams,
