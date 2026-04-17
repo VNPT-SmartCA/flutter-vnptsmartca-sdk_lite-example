@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
-		36608D7D2F35F5D5002F14B6 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36608D7C2F35F5D5002F14B6 /* Pods_Runner.framework */; };
+		361C5C482F63C4B400285323 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361C5C472F63C4B400285323 /* Pods_Runner.framework */; };
 		36608D812F35F5F7002F14B6 /* SmartCASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36608D7F2F35F5F4002F14B6 /* SmartCASDK.framework */; };
 		36608D822F35F5F7002F14B6 /* SmartCASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36608D7F2F35F5F4002F14B6 /* SmartCASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		36608D8C2F35FE86002F14B6 /* eKYCLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36608D842F35F61F002F14B6 /* eKYCLib.xcframework */; };
@@ -60,6 +60,7 @@
 		2012EDF14B955A4552DBDE54 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		361C5C472F63C4B400285323 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36608D7C2F35F5D5002F14B6 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36608D7F2F35F5F4002F14B6 /* SmartCASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SmartCASDK.framework; sourceTree = "<group>"; };
 		36608D842F35F61F002F14B6 /* eKYCLib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = eKYCLib.xcframework; sourceTree = "<group>"; };
@@ -95,8 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361C5C482F63C4B400285323 /* Pods_Runner.framework in Frameworks */,
 				36608D8C2F35FE86002F14B6 /* eKYCLib.xcframework in Frameworks */,
-				36608D7D2F35F5D5002F14B6 /* Pods_Runner.framework in Frameworks */,
 				36608D8E2F35FE86002F14B6 /* ICSdkEKYC.xcframework in Frameworks */,
 				36608D812F35F5F7002F14B6 /* SmartCASDK.framework in Frameworks */,
 			);
@@ -166,6 +167,7 @@
 		9B28C53E69F8FB0A2852CB9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				361C5C472F63C4B400285323 /* Pods_Runner.framework */,
 				36608D7C2F35F5D5002F14B6 /* Pods_Runner.framework */,
 				18EA51D82C477F3400CAB4F9 /* SmartCASDK.framework */,
 				18EA51D72C477D9C00CAB4F9 /* ios */,
@@ -384,11 +386,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
 		};
 		EDA52E08646268147DC2A254 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
@@ -520,6 +522,7 @@
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SmartCA Lite SDK";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -729,6 +732,7 @@
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SmartCA Lite SDK";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -767,6 +771,7 @@
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SmartCA Lite SDK";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

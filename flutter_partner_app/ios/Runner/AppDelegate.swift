@@ -12,37 +12,60 @@ import SmartCASDK
         
         if let rootView = window?.rootViewController as? FlutterViewController {
             let customParams = CustomParams(
-                // customerId: "",
                 borderRadiusBtn: 999,
                 colorSecondBtn: "#FFFFFF",
                 colorPrimaryBtn: "#4788FF",
                 featuresLink: "https://www.google.com/?hl=vi",
-                // customerPhone: "",
-                // customerEmail: "",
-                // packageDefault: "",
-                // password: "",
                 logoCustom: "",
                 backgroundLogin: ""
             )
-        
-            let config = SDKConfig(
-                clientId: "",
-                clientSecret: "",
-                environment: ENVIRONMENT.DEMO, 
-                lang: LANG.VI,
-                isFlutterApp: true,
-                customParams: customParams
-            );
 
-            self.vnptSmartCASDK = VNPTSmartCASDK(
-                viewController: rootView,
-                config: config)
-            
+            func createConfig(isProd: Bool) -> SDKConfig {
+                if isProd {
+                    return SDKConfig(
+                        clientId: "4a84-639089078489881767.apps.smartcaapi.com",
+                        clientSecret: "OWUyOWUzZjg-YjIwNy00YTg0",
+                        environment: ENVIRONMENT.PRODUCTION,
+                        lang: LANG.VI,
+                        isFlutterApp: true,
+                        customParams: customParams
+                    )
+                } else {
+                    return SDKConfig(
+                        clientId: "447a-639051886115104575.apps.smartcaapi.com",
+                        clientSecret: "NWQzNDE3ZTc-YjI0OC00NDdh",
+                        environment: ENVIRONMENT.DEMO,
+                        lang: LANG.VI,
+                        isFlutterApp: true,
+                        customParams: customParams
+                    )
+                }
+            }
+
+            func initSDK(isProd: Bool) {
+                if( self.vnptSmartCASDK != nil) {
+                    self.vnptSmartCASDK?.destroySDK();
+                }
+                
+                let config = createConfig(isProd: isProd)
+                self.vnptSmartCASDK = VNPTSmartCASDK(viewController: rootView, config: config)
+                GeneratedPluginRegistrant.register(with: self.vnptSmartCASDK?.flutterEngine as! FlutterPluginRegistry);
+            }
+
+            initSDK(isProd: false)
+
             let channel = FlutterMethodChannel(name: "com.vnpt.flutter/partner", binaryMessenger: rootView.binaryMessenger)
             channel.setMethodCallHandler({ (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
                 self.channelFlutter = channel
-                
-                if call.method == "getAuthentication" {
+                if call.method == "switchEnvironment" {
+                    guard let envArg = call.arguments as? String else {
+                        result(FlutterError(code: "INVALID_ARG", message: "Môi trường không hợp lệ", details: nil))
+                        return
+                    }
+                    let toProd = envArg.uppercased() == "PROD"
+                    initSDK(isProd: toProd)
+                    result("OK")
+                } else if call.method == "getAuthentication" {
                     let customerId = call.arguments as? String ?? ""
                     self.getAuthentication(customerId: customerId)
                 } else if call.method == "getMainInfo" {
@@ -50,16 +73,13 @@ import SmartCASDK
                 } else if call.method == "getWaitingTransaction" {
                     let transactionId = call.arguments as? String ?? ""
                     self.getWaitingTransaction(transactionId: transactionId)
-                } else if call.method == "signOut"{
-                    self.signOut()
-                } else if call.method == "createAccount" {
-                    self.createAccount()
-                }
+                } 
             })
+                
         }
         
         GeneratedPluginRegistrant.register(with: self)
-        GeneratedPluginRegistrant.register(with: self.vnptSmartCASDK?.flutterEngine as! FlutterPluginRegistry);
+        
         
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

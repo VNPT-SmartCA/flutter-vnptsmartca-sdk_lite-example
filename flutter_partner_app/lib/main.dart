@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
       ),
-      home: const MyHomePage(title: 'Lite SDK Demo Home Page'),
+      home: const MyHomePage(title: 'VNPT SmartCA Lite SDK'),
     );
   }
 }
@@ -47,11 +47,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const platform = MethodChannel("com.vnpt.flutter/partner");
-  final _customerIdController = TextEditingController(text: "040098017998");
+  final _customerIdController = TextEditingController(text: "");
   final _trandIdController =
       TextEditingController(text: "");
+  bool _isProdEnv = false;
 
-  initMethod(BuildContext context) {
+  @override
+  void initState() {
+    super.initState();
+    initMethod();
+  }
+
+  initMethod() {
     platform.setMethodCallHandler((call) async {
       if (call.method == "getAuthenticationResult") {
         debugPrint("getAuthenticationResult");
@@ -123,13 +130,25 @@ class _MyHomePageState extends State<MyHomePage> {
     await platform.invokeMethod('createAccount');
   }
 
+  Future<void> switchEnvironment(bool toProd) async {
+    final env = toProd ? 'PROD' : 'DEMO';
+    try {
+      await platform.invokeMethod('switchEnvironment', env);
+      setState(() {
+        _isProdEnv = toProd;
+      });
+      showDialogMessage(context, 'Đã chuyển môi trường sang $env');
+    } catch (e) {
+      showDialogMessage(context, 'Chuyển môi trường thất bại: $e');
+    }
+  }
+
   Future<void> signOut() async {
     await platform.invokeMethod('signOut');
   }
 
   @override
   Widget build(BuildContext context) {
-    initMethod(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -139,10 +158,33 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('Môi trường hiện tại: ${_isProdEnv ? 'PROD' : 'DEMO'}'),
+            SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () => switchEnvironment(false),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: _isProdEnv ? Colors.grey : Colors.blue,
+                  ),
+                  child: Text('DEMO'),
+                ),
+                SizedBox(width: 12),
+                ElevatedButton(
+                  onPressed: () => switchEnvironment(true),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: _isProdEnv ? Colors.blue : Colors.grey,
+                  ),
+                  child: Text('PROD'),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
             TextField(
               controller: _customerIdController,
               decoration: InputDecoration(
-                labelText: "Customer ID",
+                labelText: "Số CCCD",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -153,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TextField(
               controller: _trandIdController,
               decoration: InputDecoration(
-                labelText: "Transaction ID",
+                labelText: "Mã giao dịch (TranID)",
                 border: OutlineInputBorder(),
               ),
             ),
