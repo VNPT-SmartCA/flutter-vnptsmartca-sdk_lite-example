@@ -139,36 +139,18 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.annotation:annotation:1.7.0")
 
-    implementation("com.auth0.android:jwtdecode:2.0.2")    
-    implementation("com.github.gcacace:signature-pad:1.3.1")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")                              
-
-    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
-    implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
-
+    implementation("com.google.android.gms:play-services-auth-api-phone:18.3.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("com.karumi:dexter:6.2.3")   
-
-    implementation("androidx.exifinterface:exifinterface:1.3.7")
     implementation("com.google.code.gson:gson:2.10.1")  
-
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
-    implementation("de.hdodenhof:circleimageview:3.1.0")
-    implementation("com.intuit.sdp:sdp-android:1.1.0")
-    // implementation("me.dm7.barcodescanner:zxing:1.9.8") {
-    //     exclude(group = "com.android.support") 
-    // }
-
+    implementation("me.dm7.barcodescanner:zxing:1.9.8") {
+        exclude(group = "com.android.support") 
+    }
     implementation("androidx.core:core:1.12.0")
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
     implementation("com.airbnb.android:lottie:6.3.0")
